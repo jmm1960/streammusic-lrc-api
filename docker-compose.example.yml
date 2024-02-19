@@ -1,0 +1,14 @@
+version: "3"
+services:
+  neteasecloudmusicapi:
+    image: binaryify/netease_cloud_music_api:latest
+    container_name: neteasecloudmusicapi
+    restart: unless-stopped
+  ylyric:
+    build: .
+    container_name: ylyric
+    restart: unless-stopped
+    ports:
+      - "0.0.0.0:8092:8092"
+    volumes:
+      - "/mnt/blockstorage/music:/music:ro"
